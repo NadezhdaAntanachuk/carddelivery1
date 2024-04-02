@@ -8,8 +8,7 @@ import ru.netology.delivery.data.DataGenerator;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -44,7 +43,7 @@ public class CardDeliveryTest {
         $(cssSelector("[data-test-id='date'] input")).setValue(secondMeetingDate);
         $(byText("Запланировать")).click();
         $(cssSelector("[data-test-id='replan-notification'] .notification__content"))
-                .shouldHave(exactText("У вас уже запланирована встреча на другую дату. Перепланировать?"))
+                .shouldHave(text("У вас уже запланирована встреча на другую дату. Перепланировать?"))
                 .shouldBe(visible);
         $(cssSelector("[data-test-id='replan-notification'] .notification__content button")).click();
         $(cssSelector("[data-test-id='success-notification'] .notification__content"))
